@@ -14,10 +14,9 @@ SOURCES += \
     Office.cpp \
     Person.cpp \
     TelephoneBookController.cpp \
+    TelephoneBookMainView.cpp \
     TelephoneBookModel.cpp \
-    TelephoneBookView.cpp \
-    main.cpp \
-    telephonebookmainview.cpp
+    main.cpp
 
 HEADERS += \
     Company.h \
@@ -25,13 +24,11 @@ HEADERS += \
     Office.h \
     Person.h \
     TelephoneBookController.h \
-    TelephoneBookModel.h \
-    TelephoneBookView.h \
-    ViewListener.h \
-    telephonebookmainview.h
+    TelephoneBookMainView.h \
+    TelephoneBookModel.h
 
 FORMS += \
-    telephonebookmainview.ui
+    TelephoneBookMainView.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

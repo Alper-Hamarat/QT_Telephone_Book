@@ -3,24 +3,20 @@
 
 #include <iostream>
 
-#include "ViewListener.h"
 #include "TelephoneBookModel.h"
-#include "TelephoneBookView.h"
+#include "TelephoneBookMainView.h"
 
 
 using namespace std;
 
-class TelephoneBookController : public ViewListener
+class TelephoneBookController
 {
 
 private:
-    TelephoneBookView * view;
+    TelephoneBookMainView * view;
     TelephoneBookModel * model;
 public:
-    string getUserInput(string textToDisplay) override; 
-    char getMenuInput(string textToDisplay) override; 
-    
-    TelephoneBookController(TelephoneBookView * view , TelephoneBookModel * model);
+    TelephoneBookController(TelephoneBookMainView * view , TelephoneBookModel * model);
     void run();
 };
 
