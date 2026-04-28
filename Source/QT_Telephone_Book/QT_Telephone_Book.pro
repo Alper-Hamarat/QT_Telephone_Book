@@ -9,10 +9,25 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Company.cpp \
+    Entry.cpp \
+    Office.cpp \
+    Person.cpp \
+    TelephoneBookController.cpp \
+    TelephoneBookModel.cpp \
+    TelephoneBookView.cpp \
     main.cpp \
     telephonebookmainview.cpp
 
 HEADERS += \
+    Company.h \
+    Entry.h \
+    Office.h \
+    Person.h \
+    TelephoneBookController.h \
+    TelephoneBookModel.h \
+    TelephoneBookView.h \
+    ViewListener.h \
     telephonebookmainview.h
 
 FORMS += \
