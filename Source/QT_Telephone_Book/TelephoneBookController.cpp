@@ -12,5 +12,11 @@ TelephoneBookController::TelephoneBookController(TelephoneBookMainView * view , 
 
 void TelephoneBookController::run()
 {
+    //Show the view
     this->view->show();
+    Entry * empty = new Entry();
+    this->model->addEntry(*empty);
+    vector<Entry *> entries = this->model->getEntries();
+
+    this->view->setEntries(entries);
 }

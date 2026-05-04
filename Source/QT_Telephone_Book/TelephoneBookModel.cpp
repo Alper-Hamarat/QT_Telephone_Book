@@ -12,9 +12,7 @@ Entry * TelephoneBookModel::getEntry(string name)
     //Build iterator of type Vector Entry
     for (auto entry : this->getEntries())
     {
-        cout << endl << entry->getName() << endl;
         string test = entry->getName();
-        cout << test << endl;
         if(test.compare(name) == 0)
         {
             return entry;

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "Entry.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class TelephoneBookMainView; }
 QT_END_NAMESPACE
@@ -14,6 +16,7 @@ class TelephoneBookMainView : public QMainWindow
 public:
     TelephoneBookMainView(QWidget *parent = nullptr);
     ~TelephoneBookMainView();
+    void setEntries(std::vector<Entry *>& entries);
 
 private:
     Ui::TelephoneBookMainView *ui;

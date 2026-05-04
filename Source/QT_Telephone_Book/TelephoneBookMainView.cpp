@@ -13,3 +13,13 @@ TelephoneBookMainView::~TelephoneBookMainView()
     delete ui;
 }
 
+void TelephoneBookMainView::setEntries(std::vector<Entry *>& entries)
+{
+    ui->listEntries->clear();
+
+    for (auto& entry : entries)
+    {
+        QString name = QString::fromStdString(entry->getName());
+        ui->listEntries->addItem(name);
+    }
+}
