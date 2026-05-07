@@ -2,7 +2,7 @@
 
 Entry::Entry(string name, string telNr, string address) : name(name), telNr(telNr), address(address){}
 
-Entry::Entry() : Entry("Max","Mustermann","012345678" ){};
+Entry::Entry() : Entry("Max Mustermann","012345678", "Musterstadt"){};
 
 string Entry::getName()
 {
