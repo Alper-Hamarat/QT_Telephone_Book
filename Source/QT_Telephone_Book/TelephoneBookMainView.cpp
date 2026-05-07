@@ -1,5 +1,5 @@
 #include "TelephoneBookMainView.h"
-#include "ui_telephonebookmainview.h"
+#include "ui_TelephoneBookMainView.h"
 
 TelephoneBookMainView::TelephoneBookMainView(QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +20,24 @@ void TelephoneBookMainView::setEntries(std::vector<Entry *>& entries)
     for (auto& entry : entries)
     {
         QString name = QString::fromStdString(entry->getName());
-        ui->listEntries->addItem(name);
+
+        QListWidgetItem* item = new QListWidgetItem(name);
+
+        item->setData(Qt::UserRole,
+                      QVariant::fromValue(reinterpret_cast<quintptr>(entry)));
+
+        ui->listEntries->addItem(item);
     }
 }
+
+void TelephoneBookMainView::on_listEntries_itemClicked(QListWidgetItem *item)
+{
+    quintptr ptrValue = item->data(Qt::UserRole).value<quintptr>();
+
+    Entry* entry = reinterpret_cast<Entry*>(ptrValue);
+
+    ui->lblName->setText(QString::fromStdString(entry->getName()));
+    ui->lblTelNr->setText(QString::fromStdString(entry->getTelNr()));
+    ui->lblAddress->setText(QString::fromStdString(entry->getAddress()));
+}
+

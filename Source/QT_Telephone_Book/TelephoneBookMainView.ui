@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>372</height>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,40 +17,40 @@
    <widget class="QLabel" name="lblTelNr">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>100</x>
       <y>50</y>
       <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Phone Number</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="lblAddress">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>100</x>
       <y>80</y>
       <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Address:</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="lblName">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>100</x>
       <y>20</y>
       <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Name:</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="btnEdit">
@@ -89,24 +89,46 @@
      </rect>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuTelephone_Book">
-    <property name="title">
-     <string>Telephone Book</string>
+   <widget class="QLabel" name="lblName_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Name:</string>
     </property>
    </widget>
-   <addaction name="menuTelephone_Book"/>
+   <widget class="QLabel" name="lblAddress_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Address:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTelNr_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Phone Number</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
