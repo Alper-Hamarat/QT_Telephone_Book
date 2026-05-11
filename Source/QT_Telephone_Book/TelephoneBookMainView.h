@@ -17,9 +17,12 @@ public:
     TelephoneBookMainView(QWidget *parent = nullptr);
     ~TelephoneBookMainView();
     void setEntries(std::vector<Entry *>& entries);
-
+signals:
+    void deleteEntryRequested(Entry* entry);
 private slots:
     void on_listEntries_itemClicked(QListWidgetItem *item);
+
+    void on_btnDelete_clicked();
 
 private:
     Ui::TelephoneBookMainView *ui;

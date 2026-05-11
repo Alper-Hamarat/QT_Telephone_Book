@@ -17,6 +17,8 @@ private:
     TelephoneBookModel * model;
 public:
     TelephoneBookController(TelephoneBookMainView * view , TelephoneBookModel * model);
+    void init();
+    void deleteEntry(Entry * entry);
     void run();
 };
 

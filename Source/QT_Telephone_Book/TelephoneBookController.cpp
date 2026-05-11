@@ -10,6 +10,20 @@ TelephoneBookController::TelephoneBookController(TelephoneBookMainView * view , 
     this->model = model;
 }
 
+void TelephoneBookController::init()
+{
+    QObject::connect(view, &TelephoneBookMainView::deleteEntryRequested,
+                     view,
+                     [this](Entry *entry) { deleteEntry(entry); });
+}
+
+void TelephoneBookController::deleteEntry(Entry * entry)
+{
+    this->model->removeEntry(entry->getName());
+    std::vector<Entry *> entries = this->model->getEntries();
+    this->view->setEntries(entries);
+}
+
 void TelephoneBookController::run()
 {
     //Show the view

@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     TelephoneBookModel model;
     TelephoneBookMainView view;
     TelephoneBookController controller(&view, &model);
+    controller.init();
     controller.run();
     return a.exec();
 }

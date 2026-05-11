@@ -1,6 +1,9 @@
 #include "TelephoneBookMainView.h"
 #include "ui_TelephoneBookMainView.h"
 
+//Set when user clicks on Entry
+Entry * selectedEntry;
+
 TelephoneBookMainView::TelephoneBookMainView(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::TelephoneBookMainView)
@@ -34,10 +37,16 @@ void TelephoneBookMainView::on_listEntries_itemClicked(QListWidgetItem *item)
 {
     quintptr ptrValue = item->data(Qt::UserRole).value<quintptr>();
 
-    Entry* entry = reinterpret_cast<Entry*>(ptrValue);
+    selectedEntry = reinterpret_cast<Entry*>(ptrValue);
 
-    ui->lblName->setText(QString::fromStdString(entry->getName()));
-    ui->lblTelNr->setText(QString::fromStdString(entry->getTelNr()));
-    ui->lblAddress->setText(QString::fromStdString(entry->getAddress()));
+    ui->lblName->setText(QString::fromStdString(selectedEntry->getName()));
+    ui->lblTelNr->setText(QString::fromStdString(selectedEntry->getTelNr()));
+    ui->lblAddress->setText(QString::fromStdString(selectedEntry->getAddress()));
+}
+
+
+void TelephoneBookMainView::on_btnDelete_clicked()
+{
+    emit deleteEntryRequested(selectedEntry);
 }
 
