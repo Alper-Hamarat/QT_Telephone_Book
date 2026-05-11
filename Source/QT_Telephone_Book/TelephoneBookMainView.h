@@ -16,13 +16,20 @@ class TelephoneBookMainView : public QMainWindow
 public:
     TelephoneBookMainView(QWidget *parent = nullptr);
     ~TelephoneBookMainView();
-    void setEntries(std::vector<Entry *>& entries);
+    void setEntries(std::vector<Entry>& entries);
+    void showEntry(Entry &entry);
 signals:
-    void deleteEntryRequested(Entry* entry);
+    void entrySelected(string name);
+    void deleteEntryRequested(string name);
+    void addEntryRequested(string name,
+                           string phone,
+                           string address);
 private slots:
     void on_listEntries_itemClicked(QListWidgetItem *item);
 
     void on_btnDelete_clicked();
+
+    void on_btnAdd_clicked();
 
 private:
     Ui::TelephoneBookMainView *ui;

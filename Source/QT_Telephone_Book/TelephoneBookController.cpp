@@ -12,16 +12,41 @@ TelephoneBookController::TelephoneBookController(TelephoneBookMainView * view , 
 
 void TelephoneBookController::init()
 {
+    QObject::connect(view, &TelephoneBookMainView::entrySelected,
+                     view,
+                     [this] (string name) {selectEntry(name); });
     QObject::connect(view, &TelephoneBookMainView::deleteEntryRequested,
                      view,
-                     [this](Entry *entry) { deleteEntry(entry); });
+                     [this](string name) { deleteEntry(name); });
+    QObject::connect(view, &TelephoneBookMainView::addEntryRequested,
+                     view,
+                     [this](string name, string phone, string address)
+                     { addEntry(name, phone, address); });
 }
 
-void TelephoneBookController::deleteEntry(Entry * entry)
+void TelephoneBookController::deleteEntry(std::string name)
 {
-    this->model->removeEntry(entry->getName());
-    std::vector<Entry *> entries = this->model->getEntries();
+    this->model->removeEntry(name);
+    std::vector<Entry> entries = this->model->getEntries();
     this->view->setEntries(entries);
+}
+
+void TelephoneBookController::addEntry(string name, string phone, string address)
+{
+    Entry newEntry(name, phone, address);
+    this->model->addEntry(newEntry);
+    std::vector<Entry> entries = this->model->getEntries();
+    this->view->setEntries(entries);
+}
+
+void TelephoneBookController::selectEntry(std::string name)
+{
+    Entry* entry = model->getEntry(name);
+
+    if (entry == nullptr)
+        return;
+
+    view->showEntry(*entry);
 }
 
 void TelephoneBookController::run()
@@ -30,7 +55,7 @@ void TelephoneBookController::run()
     this->view->show();
     Entry * empty = new Entry();
     this->model->addEntry(*empty);
-    vector<Entry *> entries = this->model->getEntries();
+    vector<Entry> entries = this->model->getEntries();
 
     this->view->setEntries(entries);
 }

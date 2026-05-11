@@ -2,7 +2,7 @@
 #include "ui_TelephoneBookMainView.h"
 
 //Set when user clicks on Entry
-Entry * selectedEntry;
+string selectedName;
 
 TelephoneBookMainView::TelephoneBookMainView(QWidget *parent)
     : QMainWindow(parent)
@@ -16,37 +16,47 @@ TelephoneBookMainView::~TelephoneBookMainView()
     delete ui;
 }
 
-void TelephoneBookMainView::setEntries(std::vector<Entry *>& entries)
+void TelephoneBookMainView::setEntries(std::vector<Entry>& entries)
 {
     ui->listEntries->clear();
 
-    for (auto& entry : entries)
+    for (Entry& entry : entries)
     {
-        QString name = QString::fromStdString(entry->getName());
+        QString name = QString::fromStdString(entry.getName());
 
         QListWidgetItem* item = new QListWidgetItem(name);
-
-        item->setData(Qt::UserRole,
-                      QVariant::fromValue(reinterpret_cast<quintptr>(entry)));
+        item->setData(Qt::UserRole, name);
 
         ui->listEntries->addItem(item);
     }
 }
 
+void TelephoneBookMainView::showEntry(Entry& entry)
+{
+    ui->lblName->setText(QString::fromStdString(entry.getName()));
+    ui->lblTelNr->setText(QString::fromStdString(entry.getTelNr()));
+    ui->lblAddress->setText(QString::fromStdString(entry.getAddress()));
+}
+
 void TelephoneBookMainView::on_listEntries_itemClicked(QListWidgetItem *item)
 {
-    quintptr ptrValue = item->data(Qt::UserRole).value<quintptr>();
-
-    selectedEntry = reinterpret_cast<Entry*>(ptrValue);
-
-    ui->lblName->setText(QString::fromStdString(selectedEntry->getName()));
-    ui->lblTelNr->setText(QString::fromStdString(selectedEntry->getTelNr()));
-    ui->lblAddress->setText(QString::fromStdString(selectedEntry->getAddress()));
+    selectedName = item->data(Qt::UserRole).toString().toStdString();
+    emit entrySelected(selectedName);
 }
 
 
 void TelephoneBookMainView::on_btnDelete_clicked()
 {
-    emit deleteEntryRequested(selectedEntry);
+    emit deleteEntryRequested(selectedName);
+}
+
+
+void TelephoneBookMainView::on_btnAdd_clicked()
+{
+    string name = ui->lineNameAdd->text().toStdString();
+    string phone = ui->linePhoneAdd->text().toStdString();
+    string address = ui->lineAddressAdd->text().toStdString();
+
+    emit addEntryRequested(name, phone, address);
 }
 

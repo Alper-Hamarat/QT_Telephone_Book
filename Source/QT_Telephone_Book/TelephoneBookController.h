@@ -18,7 +18,9 @@ private:
 public:
     TelephoneBookController(TelephoneBookMainView * view , TelephoneBookModel * model);
     void init();
-    void deleteEntry(Entry * entry);
+    void selectEntry(std::string name);
+    void deleteEntry(std::string name);
+    void addEntry(string name, string phone, string adress);
     void run();
 };
 
