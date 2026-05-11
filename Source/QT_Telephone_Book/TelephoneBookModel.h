@@ -9,15 +9,15 @@
 class TelephoneBookModel
 {
 private:
-    vector<Entry *> listEntries;
+    std::vector<Entry> listEntries;
 
 public:
 
-    vector<Entry *> getEntries();
-    Entry * getEntry(string name);
-    bool addEntry(Entry & newEntry);
-    bool removeEntry(string name);
-    bool editEntry(string name, Entry * newEntry);
+    std::vector<Entry> getEntries();
+    Entry* getEntry(std::string name);
+    bool addEntry(Entry& newEntry);
+    bool removeEntry(std::string name);
+    bool editEntry(std::string name, Entry& newEntry);
 };
 
 #endif /* TELEPHONEBOOKMODEL_H */

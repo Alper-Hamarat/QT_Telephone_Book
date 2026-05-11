@@ -2,64 +2,59 @@
 
 #include <optional>
 
-vector<Entry *> TelephoneBookModel::getEntries()
+vector<Entry> TelephoneBookModel::getEntries()
 {
     return listEntries;
 }
 
-Entry * TelephoneBookModel::getEntry(string name)
+Entry* TelephoneBookModel::getEntry(std::string name)
 {
-    //Build iterator of type Vector Entry
-    for (auto entry : this->getEntries())
+    for (Entry& entry : this->listEntries)
     {
-        string test = entry->getName();
-        if(test.compare(name) == 0)
+        if (entry.getName() == name)
         {
-            return entry;
+            return &entry;
         }
     }
-    return NULL;
+
+    return nullptr;
 }
 
-bool TelephoneBookModel::addEntry(Entry & newEntry)
+bool TelephoneBookModel::addEntry(Entry& newEntry)
 {
-    //Check if entry already exists
-    if(getEntry(newEntry.getName()) != NULL)
+    if (getEntry(newEntry.getName()) != nullptr)
     {
         return false;
     }
-    else
-    {
-        listEntries.push_back(&newEntry);
-        return true;
-    }
+
+    listEntries.push_back(newEntry);
+    return true;
 }
 
-bool TelephoneBookModel::removeEntry(string name)
+bool TelephoneBookModel::removeEntry(std::string name)
 {
-    //Build iterator of type Vector Entry
-
     for (auto it = listEntries.begin(); it != listEntries.end(); ++it)
     {
-        if((*it)->getName() == name)
+        if (it->getName() == name)
         {
             listEntries.erase(it);
             return true;
         }
     }
+
     return false;
 }
 
-bool TelephoneBookModel::editEntry(string name, Entry * newEntry)
+bool TelephoneBookModel::editEntry(std::string name,
+                                   Entry& newEntry)
 {
-    //Build iterator of type Vector Entry
-    for (auto it = listEntries.begin(); it != listEntries.end(); ++it)
+    Entry* oldEntry = getEntry(name);
+
+    if (oldEntry == nullptr)
     {
-        if((*it)->getName() == name)
-        {
-            *it = newEntry;
-            return true;
-        }
+        return false;
     }
-    return false;
+
+    *oldEntry = newEntry;
+    return true;
 }
