@@ -33,6 +33,34 @@ The application allows users to:
 
 ---
 
+# UML Class Diagram
+
+The project architecture can also be visualized using a UML class diagram.
+
+Example:
+
+```md
+![Class Diagram](images/classdiagram.svg)
+```
+
+Recommended export formats:
+
+- SVG (recommended)
+- PNG
+
+Suggested project structure:
+
+```text
+.
+├── README.md
+├── images
+│   └── classdiagram.svg
+```
+
+The diagram can be exported from your UML tool and placed inside the `images` directory.
+
+---
+
 # Architecture
 
 The application is structured using a simple MVC pattern.
