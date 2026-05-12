@@ -33,9 +33,9 @@ void TelephoneBookMainView::setEntries(std::vector<Entry>& entries)
 
 void TelephoneBookMainView::showEntry(Entry& entry)
 {
-    ui->lblName->setText(QString::fromStdString(entry.getName()));
-    ui->lblTelNr->setText(QString::fromStdString(entry.getTelNr()));
-    ui->lblAddress->setText(QString::fromStdString(entry.getAddress()));
+    ui->lineNameAdd->setText(QString::fromStdString(entry.getName()));
+    ui->linePhoneAdd->setText(QString::fromStdString(entry.getTelNr()));
+    ui->lineAddressAdd->setText(QString::fromStdString(entry.getAddress()));
 }
 
 void TelephoneBookMainView::on_listEntries_itemClicked(QListWidgetItem *item)
@@ -47,6 +47,9 @@ void TelephoneBookMainView::on_listEntries_itemClicked(QListWidgetItem *item)
 
 void TelephoneBookMainView::on_btnDelete_clicked()
 {
+    ui->lineNameAdd->setText("");
+    ui->linePhoneAdd->setText("");
+    ui->lineAddressAdd->setText("");
     emit deleteEntryRequested(selectedName);
 }
 
@@ -58,5 +61,10 @@ void TelephoneBookMainView::on_btnAdd_clicked()
     string address = ui->lineAddressAdd->text().toStdString();
 
     emit addEntryRequested(name, phone, address);
+
+    ui->lineNameAdd->setText("");
+    ui->linePhoneAdd->setText("");
+    ui->lineAddressAdd->setText("");
 }
+
 
