@@ -43,22 +43,6 @@ Example:
 ![Class Diagram](Documentation/classdiagram.svg)
 ```
 
-Recommended export formats:
-
-- SVG (recommended)
-- PNG
-
-Suggested project structure:
-
-```text
-.
-├── README.md
-├── images
-│   └── classdiagram.svg
-```
-
-The diagram can be exported from your UML tool and placed inside the `images` directory.
-
 ---
 
 # Architecture
