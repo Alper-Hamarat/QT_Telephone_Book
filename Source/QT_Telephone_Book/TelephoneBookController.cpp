@@ -22,6 +22,10 @@ void TelephoneBookController::init()
                      view,
                      [this](string name, string phone, string address)
                      { addEntry(name, phone, address); });
+    QObject::connect(view, &TelephoneBookMainView::editEntryRequested,
+                     view,
+                     [this](string entryName, string name, string phone, string address)
+                     { editEntry(entryName, name, phone, address); });
 }
 
 void TelephoneBookController::deleteEntry(std::string name)
@@ -53,6 +57,8 @@ void TelephoneBookController::editEntry(string entryName, string newName, string
 {
     Entry newEntry(newName, newPhone, newAddress);
     this->model->editEntry(entryName, newEntry);
+    std::vector<Entry> entries = this->model->getEntries();
+    this->view->setEntries(entries);
 }
 
 void TelephoneBookController::run()

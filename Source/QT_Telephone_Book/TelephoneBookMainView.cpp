@@ -68,3 +68,15 @@ void TelephoneBookMainView::on_btnAdd_clicked()
 }
 
 
+
+void TelephoneBookMainView::on_btnEdit_clicked()
+{
+    string name = ui->lineNameAdd->text().toStdString();
+    string phone = ui->linePhoneAdd->text().toStdString();
+    string address = ui->lineAddressAdd->text().toStdString();
+    emit editEntryRequested(selectedName, name, phone, address);
+    ui->lineNameAdd->setText("");
+    ui->linePhoneAdd->setText("");
+    ui->lineAddressAdd->setText("");
+}
+

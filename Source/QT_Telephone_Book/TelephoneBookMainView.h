@@ -24,12 +24,18 @@ signals:
     void addEntryRequested(string name,
                            string phone,
                            string address);
+    void editEntryRequested(string entryName,
+                            string newName,
+                            string newPhone,
+                            string newAddress);
 private slots:
     void on_listEntries_itemClicked(QListWidgetItem *item);
 
     void on_btnDelete_clicked();
 
     void on_btnAdd_clicked();
+
+    void on_btnEdit_clicked();
 
 private:
     Ui::TelephoneBookMainView *ui;
