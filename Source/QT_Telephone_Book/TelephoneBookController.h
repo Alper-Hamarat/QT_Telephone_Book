@@ -21,6 +21,7 @@ public:
     void selectEntry(std::string name);
     void deleteEntry(std::string name);
     void addEntry(string name, string phone, string adress);
+    void editEntry(string entryName, string newName, string newPhone, string newAddress);
     void run();
 };
 

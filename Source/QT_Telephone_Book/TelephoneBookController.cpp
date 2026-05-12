@@ -49,6 +49,12 @@ void TelephoneBookController::selectEntry(std::string name)
     view->showEntry(*entry);
 }
 
+void TelephoneBookController::editEntry(string entryName, string newName, string newPhone, string newAddress)
+{
+    Entry newEntry(newName, newPhone, newAddress);
+    this->model->editEntry(entryName, newEntry);
+}
+
 void TelephoneBookController::run()
 {
     //Show the view
