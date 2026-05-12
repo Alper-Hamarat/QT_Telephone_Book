@@ -39,9 +39,8 @@ The project architecture can also be visualized using a UML class diagram.
 
 Example:
 
-```md
 ![Class Diagram](Documentation/classdiagram.svg)
-```
+<img src="./Documentation/classdiagram.svg">
 
 ---
 
